@@ -88,8 +88,9 @@ function ExportButton({ setCodeItem }: { setCodeItem: (item: CodeItem) => void }
           try {
             json = await getResponseFromAPI(dataUrl)
           }
-          catch (error) {
-            alert(`Error from open ai: ${JSON.stringify(error)}`)
+          catch (error: any) {
+            console.log(error)
+            alert(`Error from open ai: ${JSON.stringify(error.message)}`)
             return
           }
 
@@ -245,7 +246,7 @@ function KeyAndApiSettingBtn() {
                       const key = (document.getElementById('key') as HTMLInputElement).value
                       setAiInfo({ base_url, key })
                       setShowModal(false)
-                  }
+                    }
                   }
                   className="bg-blue-400 mt-2 mr-3 p-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring"
                 >
